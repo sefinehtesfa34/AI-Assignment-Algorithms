@@ -33,7 +33,7 @@ class HeuristicGraphBuilder:
     def heuristicGraphBuilder(self):
         self.graph=instance_of_graph.graph
         self.cities_latitude_and_longitude={}
-        with open("AI-assignment/algorithms/text_files/latitude_and_longitude.txt") \
+        with open("algorithms/text_files/latitude_and_longitude.txt") \
             as latitude_and_longitude:
             
             self.text_files=latitude_and_longitude.readlines()

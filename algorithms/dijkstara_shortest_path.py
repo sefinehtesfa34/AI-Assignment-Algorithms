@@ -1,11 +1,13 @@
 import time 
 from cmath import inf
 import heapq
-
 import numpy as np
 from build_graph import instance_of_graph
 start=time.time()
 class Dijkistra:
+    def __init__(self) -> None:
+        self.average_time=None 
+        self.solution_len=None 
     def shortest_path(self,graph, starting_vertex,target):
         self.distances = {vertex: inf for vertex in graph}
         self.distances[starting_vertex] = 0
@@ -18,7 +20,6 @@ class Dijkistra:
             self.current_distance, self.current_vertex = heapq.heappop(self.heapped)
             self.visited.add(self.current_vertex)
             if self.current_vertex==target:
-                print("Inside the graph : ",self.solution_length)
                 self.output=[]
                 temp=self.current_vertex
                 while temp!=starting_vertex:
@@ -53,14 +54,19 @@ for start_node in all_nodes:
         target=target_node
         instance_for_Dijkistra.shortest_path(graph,start,target)
         length+=instance_for_Dijkistra.solution_length
-        print("Outside the graph: ",instance_for_Dijkistra.solution_length)
-        print(start,target)
-        print(instance_for_Dijkistra.output)
+        print("\nStart Node: {} , Target Node: {}".format(start,target))
+        # print(start,target)
+        print("\nShortest path: {}".format(instance_for_Dijkistra.output))
+        
     #We can change a second into milli second by multiplying with 1000
     end_time=(time.time())*1000
     solution_length.append(length/len(graph))    
     time_taken.append(end_time - start_time)
 average_solution_length=np.sum(solution_length)/len(solution_length)
 average_time_taken=np.sum(time_taken)/len(time_taken)
+
+instance_for_Dijkistra.average_time=average_time_taken
+instance_for_Dijkistra.solution_len=average_solution_length
+
 print("The average solution length for Dijkstra alogrithm: {} ".format(average_solution_length))
 print("The average time taken for Dijkstra algorithm: {}".format(average_time_taken))

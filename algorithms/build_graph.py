@@ -9,7 +9,7 @@ class Graph:
         
 instance_of_graph=Graph()
 
-with open('AI-assignment/algorithms/text_files/connections.txt','r') as text_file:
+with open('algorithms/text_files/connections.txt','r') as text_file:
     connections=text_file.readlines()
     for connection in connections:
         instance_of_graph.graphBuilder(connection.strip().split(' '))
